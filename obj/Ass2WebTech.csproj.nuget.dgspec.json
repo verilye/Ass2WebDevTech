@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\conno\\Desktop\\Ass2WebTech\\Ass2WebTech.csproj": {}
+    "c:\\Users\\conno\\Desktop\\Ass2WebTech\\Ass2WebTech.csproj": {}
   },
   "projects": {
-    "C:\\Users\\conno\\Desktop\\Ass2WebTech\\Ass2WebTech.csproj": {
+    "c:\\Users\\conno\\Desktop\\Ass2WebTech\\Ass2WebTech.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\conno\\Desktop\\Ass2WebTech\\Ass2WebTech.csproj",
+        "projectUniqueName": "c:\\Users\\conno\\Desktop\\Ass2WebTech\\Ass2WebTech.csproj",
         "projectName": "Ass2WebTech",
-        "projectPath": "C:\\Users\\conno\\Desktop\\Ass2WebTech\\Ass2WebTech.csproj",
+        "projectPath": "c:\\Users\\conno\\Desktop\\Ass2WebTech\\Ass2WebTech.csproj",
         "packagesPath": "C:\\Users\\conno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\conno\\Desktop\\Ass2WebTech\\obj\\",
+        "outputPath": "c:\\Users\\conno\\Desktop\\Ass2WebTech\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\conno\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -21,7 +21,6 @@
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,6 +38,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
