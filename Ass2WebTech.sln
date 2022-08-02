@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ass2WebTech.Api", "Ass2WebTech.Api\Ass2WebTech.Api.csproj", "{EF2368E8-054D-4EEC-8B2A-CB5232C83ACD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ass2WebTech.Core", "Ass2WebTech.Core\Ass2WebTech.Core.csproj", "{55984F7D-FAFC-4EB0-86B2-C906344C1AD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ass2WebTech.Data", "Ass2WebTech.Data\Ass2WebTech.Data.csproj", "{97D58E72-245B-4B34-B589-79EAE999A64F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF2368E8-054D-4EEC-8B2A-CB5232C83ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF2368E8-054D-4EEC-8B2A-CB5232C83ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF2368E8-054D-4EEC-8B2A-CB5232C83ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF2368E8-054D-4EEC-8B2A-CB5232C83ACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55984F7D-FAFC-4EB0-86B2-C906344C1AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55984F7D-FAFC-4EB0-86B2-C906344C1AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55984F7D-FAFC-4EB0-86B2-C906344C1AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55984F7D-FAFC-4EB0-86B2-C906344C1AD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97D58E72-245B-4B34-B589-79EAE999A64F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97D58E72-245B-4B34-B589-79EAE999A64F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97D58E72-245B-4B34-B589-79EAE999A64F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97D58E72-245B-4B34-B589-79EAE999A64F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
