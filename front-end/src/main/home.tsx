@@ -35,7 +35,6 @@ export function Home(props: HomeProps){
 
 
         <div className='Home-Page'>
-            <header><Navbar></Navbar></header>
             <div>
                 <Box as={Container} maxW="7xl" mt={5} pt={100} pb={500}>
                     Accounts

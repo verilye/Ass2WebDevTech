@@ -36,7 +36,11 @@ import { useState } from 'react';
 
 
 export interface NavProps {
-
+    toggleDeposit():void;
+    toggleDepositClose():void;
+    toggleWithdraw():void;
+    toggleTransfer():void;
+    toggleStatements():void;
 }
 
 export function Navbar(props: NavProps){
@@ -45,20 +49,19 @@ export function Navbar(props: NavProps){
         <Box bg={useColorModeValue('blue.100', 'blue.900')} px={4}>
             <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                 
-                <Box>MCBA Bank</Box>
+                <Box style={{fontWeight: 'bold', fontSize:'40px'}}>MCBA Bank</Box>
 
                 <Stack direction={'row'} spacing={5}>
-                    <Box>Deposit</Box>
-                    <Box>Withdraw</Box>
-                    <Box>Transfer</Box>
-                    <Box>My Statements</Box>
-                    <Box>My Profile</Box>
+                    <Button colorScheme="blue" onClick={props.toggleDeposit}>Deposit</Button>
+                    <Button>Withdraw</Button>
+                    <Button colorScheme="blue">Transfer</Button>
+                    <Button>My Statements</Button>
                 </Stack>
 
                 <Flex alignItems={'center'}>
                     <Stack direction={'row'} spacing={7}>
-                        <Box>My Profile</Box>
-                        <Box>Logout</Box>
+                        <Button colorScheme="red">My Profile</Button>
+                        <Button colorScheme="green">Logout</Button>
                     </Stack>
                 </Flex>
             </Flex>
