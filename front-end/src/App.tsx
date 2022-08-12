@@ -3,6 +3,7 @@ import './App.css';
 import { useState } from 'react';
 import Login from './forms/login-form';
 import Splash from './main/splash';
+import Home from './main/home';
 
 function App() {
 
@@ -10,7 +11,7 @@ function App() {
   return (
       <div className="App">
         <div>
-          <Splash></Splash>
+         <Home></Home>
         </div>
 
         <footer>

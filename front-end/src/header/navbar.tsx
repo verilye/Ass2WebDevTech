@@ -44,13 +44,22 @@ export function Navbar(props: NavProps){
 
         <Box bg={useColorModeValue('blue.100', 'blue.900')} px={4}>
             <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-                <Box>MCBA</Box>
-                <Flex alignItems={'center'}>
-                <Stack direction={'row'} spacing={7}>
-                    <Box>
-                        Login
-                    </Box>
+                
+                <Box>MCBA Bank</Box>
+
+                <Stack direction={'row'} spacing={5}>
+                    <Box>Deposit</Box>
+                    <Box>Withdraw</Box>
+                    <Box>Transfer</Box>
+                    <Box>My Statements</Box>
+                    <Box>My Profile</Box>
                 </Stack>
+
+                <Flex alignItems={'center'}>
+                    <Stack direction={'row'} spacing={7}>
+                        <Box>My Profile</Box>
+                        <Box>Logout</Box>
+                    </Stack>
                 </Flex>
             </Flex>
         </Box>
