@@ -8,7 +8,6 @@ export interface DepositDetails {
 }
 
 export interface DepositProps {
-    onRegister(props: DepositDetails): void;
     onClose(): void;
     visible: boolean;
     disabled: boolean;
@@ -30,7 +29,7 @@ export function Deposit(props: DepositProps) {
         <Modal isOpen={props.visible} onClose={props.onClose} id="register">
             <ModalOverlay />
             <ModalContent>
-                <ModalHeader>Register to Zip-It!</ModalHeader>
+                <ModalHeader>Profile</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                     {/* This is how text input is formatted <Input disabled={props.disabled} onChange={usernameOnChange} placeholder="username" variant="filled" mb={3} type="username" id="username" /> */}

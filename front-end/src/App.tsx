@@ -9,7 +9,7 @@ import Navbar from './header/navbar';
 import Withdraw from './main/withdraw';
 import Transfer from './main/transfer';
 import Statements from './main/statements';
-
+import Profile from './main/profile';
 
 
 interface LogInDetails {
@@ -22,14 +22,38 @@ interface LogInDetails {
 
 function App() {
 
-  const [splashVisible, setSplashVisible] = useState(true);
+  const [splashVisible, setSplashVisible] = useState(false);
   const [homeVisible, setHomeVisible] = useState(false);
   const [depositVisible, setDepositVisible] = useState(false);
+  const [transferVisible, setTransferVisible] = useState(false);
+  const [withdrawVisible, setWithdrawVisible] = useState(false);
+  const [statementsVisible, setStatementsVisible] = useState(false);
+  const [profileVisible, setProfileVisible] = useState(false);
 
   const [depositDisabled, setDepositDisabled] = useState(false);
   const onShowDeposit = () => setDepositVisible(true);
   const onDepositClose = () => setDepositVisible(false);
 
+  const [withdrawDisabled, setWithdrawDisabled] = useState(false);
+  const onShowWithdraw = () => setWithdrawVisible(true);
+  const onWithdrawClose = () => setWithdrawVisible(false);
+
+  const [transferDisabled, setTransferDisabled] = useState(false);
+  const onShowTransfer = () => setTransferVisible(true);
+  const onTransferClose = () => setTransferVisible(false);
+
+  const [statementsDisabled, setStatementsDisabled] = useState(false);
+  const onShowStatements = () => setStatementsVisible(true);
+  const onStatementsClose = () => setStatementsVisible(false);
+
+  const [profileDisabled, setProfileDisabled] = useState(false);
+  const onShowProfile = () => setProfileVisible(true);
+  const onProfileClose = () => setProfileVisible(false);
+
+
+ 
+
+  
 
   const onShowHome = () => { setHomeVisible(true)
     setSplashVisible(false)} ;
@@ -53,13 +77,19 @@ function App() {
         
         toggleDeposit={onShowDeposit}
         toggleDepositClose={onDepositClose}
+        toggleWithdraw={onShowWithdraw}
+        toggleTransfer={onShowTransfer}
+        toggleStatements={onShowStatements}
+        toggleProfile={onShowProfile}
+        logout={onLogout}
+        
 
         // FILL OUT THESE FUNCTIONS WITH FUNCTIONALITY
         // toggleWithdraw():void;
         // toggleTransfer():void;
         // toggleStatements():void;
-        
         />
+
         <Home
           
         
@@ -73,22 +103,28 @@ function App() {
         />
 
         <Withdraw 
-         disabled = {depositDisabled}
-         visible ={depositVisible}
-         onClose ={onDepositClose} 
+         disabled = {withdrawDisabled}
+         visible ={withdrawVisible}
+         onClose ={onWithdrawClose} 
     
         />
 
         <Transfer
-           disabled = {depositDisabled}
-           visible ={depositVisible}
-           onClose ={onDepositClose}
+           disabled = {transferDisabled}
+           visible ={transferVisible}
+           onClose ={onTransferClose}
         />
 
         <Statements
-           disabled = {depositDisabled}
-           visible ={depositVisible}
-           onClose ={onDepositClose}
+           disabled = {statementsDisabled}
+           visible ={statementsVisible}
+           onClose ={onStatementsClose}
+        />
+
+        <Profile
+          disabled = {profileDisabled}
+          visible ={profileVisible}
+          onClose ={onProfileClose}
         />
 
 

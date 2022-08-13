@@ -29,7 +29,7 @@ export function Withdraw(props: WithdrawProps) {
         <Modal isOpen={props.visible} onClose={props.onClose} id="register">
             <ModalOverlay />
             <ModalContent>
-                <ModalHeader></ModalHeader>
+                <ModalHeader>Withdraw</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                     {/* This is how text input is formatted <Input disabled={props.disabled} onChange={usernameOnChange} placeholder="username" variant="filled" mb={3} type="username" id="username" /> */}

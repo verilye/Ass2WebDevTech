@@ -41,6 +41,8 @@ export interface NavProps {
     toggleWithdraw():void;
     toggleTransfer():void;
     toggleStatements():void;
+    toggleProfile():void;
+    logout():void;
 }
 
 export function Navbar(props: NavProps){
@@ -53,15 +55,15 @@ export function Navbar(props: NavProps){
 
                 <Stack direction={'row'} spacing={5}>
                     <Button colorScheme="blue" onClick={props.toggleDeposit}>Deposit</Button>
-                    <Button>Withdraw</Button>
-                    <Button colorScheme="blue">Transfer</Button>
-                    <Button>My Statements</Button>
+                    <Button  onClick ={props.toggleWithdraw}>Withdraw</Button>
+                    <Button colorScheme="blue" onClick ={props.toggleTransfer}>Transfer</Button>
+                    <Button onClick ={props.toggleStatements}>My Statements</Button>
                 </Stack>
 
                 <Flex alignItems={'center'}>
                     <Stack direction={'row'} spacing={7}>
-                        <Button colorScheme="red">My Profile</Button>
-                        <Button colorScheme="green">Logout</Button>
+                        <Button colorScheme="red" onClick ={props.toggleProfile}>My Profile</Button>
+                        <Button colorScheme="green"onClick ={props.logout}>Logout</Button>
                     </Stack>
                 </Flex>
             </Flex>
