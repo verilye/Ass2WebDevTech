@@ -24,17 +24,20 @@ import { Navbar } from '../header/navbar';
 
 export interface HomeProps {
 
+    disabled:boolean;
+    visible:boolean;
+    onLogout(): void;
+
 }
 
 export function Home(props: HomeProps){
     return(
 
-        
         //Paginate account data
         // include   mt={10} in pagination so that accounts are separated properly
 
-
         <div className='Home-Page'>
+
             <div>
                 <Box as={Container} maxW="7xl" mt={5} pt={100} pb={500}>
                     Accounts

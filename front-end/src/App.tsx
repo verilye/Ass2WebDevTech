@@ -10,6 +10,7 @@ import Withdraw from './main/withdraw';
 import Transfer from './main/transfer';
 import Statements from './main/statements';
 import Profile from './main/profile';
+import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
 
 
 interface LogInDetails {
@@ -22,13 +23,23 @@ interface LogInDetails {
 
 function App() {
 
-  const [splashVisible, setSplashVisible] = useState(false);
+  const [splashVisible, setSplashVisible] = useState(true);
   const [homeVisible, setHomeVisible] = useState(false);
   const [depositVisible, setDepositVisible] = useState(false);
   const [transferVisible, setTransferVisible] = useState(false);
   const [withdrawVisible, setWithdrawVisible] = useState(false);
   const [statementsVisible, setStatementsVisible] = useState(false);
   const [profileVisible, setProfileVisible] = useState(false);
+
+  const [splashDisabled, setSplashDisabled] = useState(false);
+
+  const [homeDisabled, setHomeDisabled] = useState(false);
+
+  const onShowHome = () => { setHomeVisible(true)
+    setSplashVisible(false)} ;
+
+  const onLogout = () => { setHomeVisible(false)
+    setSplashVisible(true)} ;
 
   const [depositDisabled, setDepositDisabled] = useState(false);
   const onShowDeposit = () => setDepositVisible(true);
@@ -51,16 +62,6 @@ function App() {
   const onProfileClose = () => setProfileVisible(false);
 
 
- 
-
-  
-
-  const onShowHome = () => { setHomeVisible(true)
-    setSplashVisible(false)} ;
-
-  const onLogout = () => { setHomeVisible(false)
-    setSplashVisible(true)} ;
-
 
   
   const onLogin = (props:LogInDetails) =>{ 
@@ -69,65 +70,74 @@ function App() {
   }
 
 
+
+
+  //SEPARATE APP.JS into two files for each ROUTE
+
+  //HALF OF EVERYTHING IN SPLASH.tsx and the other in HOME.TSX
+
+  //COMPLETE ROUTING IN INDEX.TSX
+
+
   return (
       <div className="App">
         <div>
 
-        <Navbar
-        
-        toggleDeposit={onShowDeposit}
-        toggleDepositClose={onDepositClose}
-        toggleWithdraw={onShowWithdraw}
-        toggleTransfer={onShowTransfer}
-        toggleStatements={onShowStatements}
-        toggleProfile={onShowProfile}
-        logout={onLogout}
-        
 
-        // FILL OUT THESE FUNCTIONS WITH FUNCTIONALITY
-        // toggleWithdraw():void;
-        // toggleTransfer():void;
-        // toggleStatements():void;
-        />
+          <Splash
+            onLogin ={onLogin}
+          />
 
-        <Home
+          <Navbar
+            toggleDeposit={onShowDeposit}
+            toggleDepositClose={onDepositClose}
+            toggleWithdraw={onShowWithdraw}
+            toggleTransfer={onShowTransfer}
+            toggleStatements={onShowStatements}
+            toggleProfile={onShowProfile}
+            logout={onLogout}
+            
+          />
+            
+          <Home
+          disabled = {homeDisabled}
+          visible = {homeVisible}
+          onLogout ={onLogout}
+            
           
-        
+          />
+
+          <Deposit
+            disabled = {depositDisabled}
+            visible ={depositVisible}
+            onClose ={onDepositClose}
+
+          />
+
+          <Withdraw 
+          disabled = {withdrawDisabled}
+          visible ={withdrawVisible}
+          onClose ={onWithdrawClose} 
+      
+          />
+
+          <Transfer
+            disabled = {transferDisabled}
+            visible ={transferVisible}
+            onClose ={onTransferClose}
+          />
+
+          <Statements
+            disabled = {statementsDisabled}
+            visible ={statementsVisible}
+            onClose ={onStatementsClose}
+          />
+
+          <Profile
+            disabled = {profileDisabled}
+            visible ={profileVisible}
+            onClose ={onProfileClose}
         />
-
-        <Deposit
-          disabled = {depositDisabled}
-          visible ={depositVisible}
-          onClose ={onDepositClose}
-
-        />
-
-        <Withdraw 
-         disabled = {withdrawDisabled}
-         visible ={withdrawVisible}
-         onClose ={onWithdrawClose} 
-    
-        />
-
-        <Transfer
-           disabled = {transferDisabled}
-           visible ={transferVisible}
-           onClose ={onTransferClose}
-        />
-
-        <Statements
-           disabled = {statementsDisabled}
-           visible ={statementsVisible}
-           onClose ={onStatementsClose}
-        />
-
-        <Profile
-          disabled = {profileDisabled}
-          visible ={profileVisible}
-          onClose ={onProfileClose}
-        />
-
-
         </div>
 
         <footer>

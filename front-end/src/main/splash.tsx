@@ -22,7 +22,13 @@ import { useState } from 'react';
 import SplashNav from '../header/navbar';
 
 
+export interface LoginDetails{
+
+}
+
 export interface SplashProps {
+
+    onLogin(props: LoginDetails): void;
 
 }
 
@@ -44,7 +50,7 @@ export function Splash(props: SplashProps){
                             <chakra.h1 fontSize="4xl" fontWeight="700">
                                 MCBA Bank
                             </chakra.h1>
-                            <Button colorScheme="blue" size="md">
+                            <Button colorScheme="blue" size="md"  onClick={props.onLogin}>
                                 Login
                             </Button>
                         </VStack>
