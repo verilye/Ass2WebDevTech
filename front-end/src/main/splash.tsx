@@ -1,4 +1,5 @@
 import{
+    useDisclosure,
     Box,
     Text,
     FormControl,
@@ -14,7 +15,8 @@ import{
     Divider,
     chakra,
     Button,
-    Container
+    Container,
+    Stack
 
 } from '@chakra-ui/react';
 import React from 'react';
@@ -61,7 +63,7 @@ export function Splash(props: SplashProps){
                                 <br/>
                                 Easy
                                 <br/>
-                                Fake
+                                Start an account now
                             </Text>
                         </GridItem>
                     </Grid>

@@ -24,6 +24,7 @@ interface LogInDetails {
 function App() {
 
   const [splashVisible, setSplashVisible] = useState(true);
+  const [navbarVisible, setNavVisible] = useState(false);
   const [homeVisible, setHomeVisible] = useState(false);
   const [depositVisible, setDepositVisible] = useState(false);
   const [transferVisible, setTransferVisible] = useState(false);
@@ -66,46 +67,43 @@ function App() {
   
   const onLogin = (props:LogInDetails) =>{ 
       
-    // client operations here
+    setSplashVisible(false);
+    setNavVisible(true);
+    setHomeVisible(true);
+
   }
 
-
-
-
-  //SEPARATE APP.JS into two files for each ROUTE
-
-  //HALF OF EVERYTHING IN SPLASH.tsx and the other in HOME.TSX
-
-  //COMPLETE ROUTING IN INDEX.TSX
 
 
   return (
       <div className="App">
         <div>
-
-
-          <Splash
-            onLogin ={onLogin}
-          />
-
-          <Navbar
-            toggleDeposit={onShowDeposit}
-            toggleDepositClose={onDepositClose}
-            toggleWithdraw={onShowWithdraw}
-            toggleTransfer={onShowTransfer}
-            toggleStatements={onShowStatements}
-            toggleProfile={onShowProfile}
-            logout={onLogout}
-            
-          />
-            
-          <Home
-          disabled = {homeDisabled}
-          visible = {homeVisible}
-          onLogout ={onLogout}
-            
           
-          />
+          {splashVisible ? 
+            <Splash
+              onLogin ={onLogin}
+            /> : null 
+          }
+          
+          {navbarVisible ?
+            <Navbar
+              toggleDeposit={onShowDeposit}
+              toggleDepositClose={onDepositClose}
+              toggleWithdraw={onShowWithdraw}
+              toggleTransfer={onShowTransfer}
+              toggleStatements={onShowStatements}
+              toggleProfile={onShowProfile}
+              logout={onLogout}
+            />: null 
+          }
+          
+          {homeVisible ?
+            <Home
+              disabled = {homeDisabled}
+              visible = {homeVisible}
+              onLogout ={onLogout}
+            />: null
+          }
 
           <Deposit
             disabled = {depositDisabled}
