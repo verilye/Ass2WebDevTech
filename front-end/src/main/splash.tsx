@@ -59,11 +59,11 @@ export function Splash(props: SplashProps){
                         </GridItem>
                         <GridItem>
                             <Text fontSize='3xl'>
-                                Simple
+                                At MCBA Bank, we're here to make a difference
                                 <br/>
-                                Easy
+                                We're here to store money
                                 <br/>
-                                Start an account now
+                                Start an account today
                             </Text>
                         </GridItem>
                     </Grid>

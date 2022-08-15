@@ -1,0 +1,17 @@
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\bin\Debug\net6.0\Ass2WebTech.Services.deps.json
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\bin\Debug\net6.0\Ass2WebTech.Services.dll
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\bin\Debug\net6.0\Ass2WebTech.Services.pdb
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\bin\Debug\net6.0\Ass2WebTech.Core.dll
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\bin\Debug\net6.0\Ass2WebTech.Core.pdb
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\obj\Debug\net6.0\Ass2WebTech.Services.csproj.AssemblyReference.cache
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\obj\Debug\net6.0\Ass2WebTech.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\obj\Debug\net6.0\Ass2WebTech.Services.AssemblyInfoInputs.cache
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\obj\Debug\net6.0\Ass2WebTech.Services.AssemblyInfo.cs
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\obj\Debug\net6.0\Ass2WebTech.Services.csproj.CoreCompileInputs.cache
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\obj\Debug\net6.0\Ass2WebTech.Services.csproj.CopyComplete
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\obj\Debug\net6.0\Ass2WebTech.Services.dll
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\obj\Debug\net6.0\refint\Ass2WebTech.Services.dll
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\obj\Debug\net6.0\Ass2WebTech.Services.pdb
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\obj\Debug\net6.0\ref\Ass2WebTech.Services.dll
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\bin\Debug\net6.0\Ass2WebTech.Services.runtimeconfig.json
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Services\obj\Debug\net6.0\Ass2WebTech.Services.genruntimeconfig.cache

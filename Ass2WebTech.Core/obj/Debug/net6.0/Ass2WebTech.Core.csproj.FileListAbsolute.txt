@@ -1,0 +1,14 @@
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Core\bin\Debug\net6.0\Ass2WebTech.Core.deps.json
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Core\bin\Debug\net6.0\Ass2WebTech.Core.dll
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Core\bin\Debug\net6.0\Ass2WebTech.Core.pdb
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Core\obj\Debug\net6.0\Ass2WebTech.Core.csproj.AssemblyReference.cache
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Core\obj\Debug\net6.0\Ass2WebTech.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Core\obj\Debug\net6.0\Ass2WebTech.Core.AssemblyInfoInputs.cache
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Core\obj\Debug\net6.0\Ass2WebTech.Core.AssemblyInfo.cs
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Core\obj\Debug\net6.0\Ass2WebTech.Core.csproj.CoreCompileInputs.cache
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Core\obj\Debug\net6.0\Ass2WebTech.Core.dll
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Core\obj\Debug\net6.0\refint\Ass2WebTech.Core.dll
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Core\obj\Debug\net6.0\Ass2WebTech.Core.pdb
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Core\obj\Debug\net6.0\ref\Ass2WebTech.Core.dll
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Core\bin\Debug\net6.0\Ass2WebTech.Core.runtimeconfig.json
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Core\obj\Debug\net6.0\Ass2WebTech.Core.genruntimeconfig.cache
