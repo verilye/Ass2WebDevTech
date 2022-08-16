@@ -58,9 +58,6 @@ namespace Ass2WebTech.Data.Migrations
                     b.Property<int>("AccountNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("AccountNumber1")
-                        .HasColumnType("int");
-
                     b.Property<double>("Amount")
                         .HasColumnType("float");
 
@@ -75,7 +72,7 @@ namespace Ass2WebTech.Data.Migrations
 
                     b.HasKey("BillPayID");
 
-                    b.HasIndex("AccountNumber1");
+                    b.HasIndex("AccountNumber");
 
                     b.HasIndex("PayeeID");
 
@@ -140,6 +137,8 @@ namespace Ass2WebTech.Data.Migrations
 
                     b.HasKey("LoginID");
 
+                    b.HasIndex("CustomerID");
+
                     b.ToTable("Logins");
                 });
 
@@ -201,6 +200,7 @@ namespace Ass2WebTech.Data.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<int?>("DestinationAccountNumber")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime>("TransactionTimeUtc")
@@ -211,13 +211,17 @@ namespace Ass2WebTech.Data.Migrations
 
                     b.HasKey("TransactionID");
 
+                    b.HasIndex("AccountNumber");
+
+                    b.HasIndex("DestinationAccountNumber");
+
                     b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("Ass2WebTech.Models.Account", b =>
                 {
                     b.HasOne("Ass2WebTech.Models.Customer", "Customer")
-                        .WithMany("Accounts")
+                        .WithMany("Account")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -228,13 +232,13 @@ namespace Ass2WebTech.Data.Migrations
             modelBuilder.Entity("Ass2WebTech.Models.BillPay", b =>
                 {
                     b.HasOne("Ass2WebTech.Models.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountNumber1")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithMany("BillPays")
+                        .HasForeignKey("AccountNumber")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Ass2WebTech.Models.Payee", "Payee")
-                        .WithMany()
+                        .WithMany("BillPay")
                         .HasForeignKey("PayeeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -244,9 +248,55 @@ namespace Ass2WebTech.Data.Migrations
                     b.Navigation("Payee");
                 });
 
+            modelBuilder.Entity("Ass2WebTech.Models.Login", b =>
+                {
+                    b.HasOne("Ass2WebTech.Models.Customer", "Customer")
+                        .WithMany("Login")
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("Ass2WebTech.Models.Transaction", b =>
+                {
+                    b.HasOne("Ass2WebTech.Models.Account", "Account")
+                        .WithMany("AccountNumbers")
+                        .HasForeignKey("AccountNumber")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Ass2WebTech.Models.Account", "DestinationAccount")
+                        .WithMany("DestinationAccountNumbers")
+                        .HasForeignKey("DestinationAccountNumber")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("DestinationAccount");
+                });
+
+            modelBuilder.Entity("Ass2WebTech.Models.Account", b =>
+                {
+                    b.Navigation("AccountNumbers");
+
+                    b.Navigation("BillPays");
+
+                    b.Navigation("DestinationAccountNumbers");
+                });
+
             modelBuilder.Entity("Ass2WebTech.Models.Customer", b =>
                 {
-                    b.Navigation("Accounts");
+                    b.Navigation("Account");
+
+                    b.Navigation("Login");
+                });
+
+            modelBuilder.Entity("Ass2WebTech.Models.Payee", b =>
+                {
+                    b.Navigation("BillPay");
                 });
 #pragma warning restore 612, 618
         }

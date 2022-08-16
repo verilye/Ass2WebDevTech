@@ -10,14 +10,27 @@ namespace Ass2WebTech.Models
 
         [Required]
         public AccountType AccountType { get; set; }
+
         [Required]
         public int CustomerID { get; set; }
         [Required]
-        public double Balance { get; set; }
+        public double Balance { get; set; }        
         
         public Customer Customer {get;set;}
+
+
+        [ForeignKey("AccountNumber")]
+        public ICollection<BillPay> BillPays{get;set;}
+
+
+        [ForeignKey("AccountNumber")]
+        public ICollection<Transaction> AccountNumbers{get;set;}
         
-        //public Transaction[] Transactions { get; set; }
+        [ForeignKey("DestinationAccountNumber")]
+        public ICollection<Transaction> DestinationAccountNumbers{get;set;}
+
+
+
     }
 
     public enum AccountType 

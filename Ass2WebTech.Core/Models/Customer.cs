@@ -25,9 +25,12 @@ namespace Ass2WebTech.Models
 
         [MaxLength(12), RegularExpression("04\\d\\d\\s\\d\\d\\d\\s\\d\\d\\d")]
         public string ?Mobile {get;set;}
-        public ICollection<Account> ?Accounts { get; set; }
 
-        //public Login Login { get; set; }
+        [ForeignKey("CustomerID")]
+        public ICollection<Login> Login{get;set;}
+
+        [ForeignKey("CustomerID")]
+        public ICollection<Account> Account{get;set;}
 
        }
         public enum State 

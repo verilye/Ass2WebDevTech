@@ -11,6 +11,7 @@ namespace Ass2WebTech.Models
         public int CustomerID{get;set;}
         [Required, MaxLength(64)]
         public string PasswordHash { get; set; }
-        Customer Customer{get;set;}
+
+        public Customer Customer{get;set;}
     }
 }

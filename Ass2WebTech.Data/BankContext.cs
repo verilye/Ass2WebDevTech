@@ -20,8 +20,25 @@ namespace Ass2WebTech.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           base.OnModelCreating(modelBuilder);
+           modelBuilder.Entity<Transaction>()
+                    .HasOne(a => a.Account)
+                    .WithMany(t => t.AccountNumbers)
+                    .HasForeignKey(t => t.AccountNumber)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Transaction>()
+                    .HasOne(a => a.DestinationAccount)
+                    .WithMany(t => t.DestinationAccountNumbers)
+                    .HasForeignKey(t => t.DestinationAccountNumber)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<BillPay>()
+                    .HasOne(a => a.Account)
+                    .WithMany(t => t.BillPays)
+                    .HasForeignKey(t => t.AccountNumber)
+                    .OnDelete(DeleteBehavior.NoAction);
         }
+
 
         //  modelBuilder.Entity<Account>();
         //     modelBuilder.Entity<BillPay>();

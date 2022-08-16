@@ -10,9 +10,11 @@ namespace Ass2WebTech.Models
 
         [Required]
         public TransactionType TransactionType { get; set; }
-        
-        [Required]
+
+        [ForeignKey("AccountNumbers")]
         public int AccountNumber { get; set; }
+
+        [ForeignKey("DestinationAccountNumbers")]
         public int ?DestinationAccountNumber{ get; set; }
 
         [Required,Range(0,Double.MaxValue)]
@@ -24,7 +26,13 @@ namespace Ass2WebTech.Models
         [Required]
         public DateTime TransactionTimeUtc { get; set; }
 
-        Account Account {get;set;}
+        public Account Account{get;set;}
+
+        public Account DestinationAccount{get;set;}
+
+
+
+
     }
 
     public enum TransactionType{

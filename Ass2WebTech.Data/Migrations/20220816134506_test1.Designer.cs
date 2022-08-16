@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ass2WebTech.Data.Migrations
 {
     [DbContext(typeof(BankContext))]
-    [Migration("20220815172101_InitialModel")]
-    partial class InitialModel
+    [Migration("20220816134506_test1")]
+    partial class test1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,8 +36,8 @@ namespace Ass2WebTech.Data.Migrations
                     b.Property<int>("AccountType")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Balance")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Balance")
+                        .HasColumnType("float");
 
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
@@ -60,11 +60,8 @@ namespace Ass2WebTech.Data.Migrations
                     b.Property<int>("AccountNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("AccountNumber1")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
 
                     b.Property<int>("PayeeID")
                         .HasColumnType("int");
@@ -77,7 +74,7 @@ namespace Ass2WebTech.Data.Migrations
 
                     b.HasKey("BillPayID");
 
-                    b.HasIndex("AccountNumber1");
+                    b.HasIndex("AccountNumber");
 
                     b.HasIndex("PayeeID");
 
@@ -94,17 +91,14 @@ namespace Ass2WebTech.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerID"), 1L, 1);
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Mobile")
-                        .IsRequired()
                         .HasMaxLength(12)
                         .HasColumnType("nvarchar(12)");
 
@@ -114,7 +108,6 @@ namespace Ass2WebTech.Data.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PostCode")
-                        .IsRequired()
                         .HasMaxLength(4)
                         .HasColumnType("nvarchar(4)");
 
@@ -122,7 +115,6 @@ namespace Ass2WebTech.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("TFN")
-                        .IsRequired()
                         .HasMaxLength(11)
                         .HasColumnType("nvarchar(11)");
 
@@ -146,6 +138,8 @@ namespace Ass2WebTech.Data.Migrations
                         .HasColumnType("nvarchar(64)");
 
                     b.HasKey("LoginID");
+
+                    b.HasIndex("CustomerID");
 
                     b.ToTable("Logins");
                 });
@@ -200,15 +194,15 @@ namespace Ass2WebTech.Data.Migrations
                     b.Property<int>("AccountNumber")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
 
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int>("DestinationAccountNumber")
+                    b.Property<int?>("DestinationAccountNumber")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime>("TransactionTimeUtc")
@@ -219,13 +213,17 @@ namespace Ass2WebTech.Data.Migrations
 
                     b.HasKey("TransactionID");
 
+                    b.HasIndex("AccountNumber");
+
+                    b.HasIndex("DestinationAccountNumber");
+
                     b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("Ass2WebTech.Models.Account", b =>
                 {
                     b.HasOne("Ass2WebTech.Models.Customer", "Customer")
-                        .WithMany("Accounts")
+                        .WithMany("Account")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -236,13 +234,13 @@ namespace Ass2WebTech.Data.Migrations
             modelBuilder.Entity("Ass2WebTech.Models.BillPay", b =>
                 {
                     b.HasOne("Ass2WebTech.Models.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountNumber1")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithMany("BillPays")
+                        .HasForeignKey("AccountNumber")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Ass2WebTech.Models.Payee", "Payee")
-                        .WithMany()
+                        .WithMany("BillPay")
                         .HasForeignKey("PayeeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -252,9 +250,55 @@ namespace Ass2WebTech.Data.Migrations
                     b.Navigation("Payee");
                 });
 
+            modelBuilder.Entity("Ass2WebTech.Models.Login", b =>
+                {
+                    b.HasOne("Ass2WebTech.Models.Customer", "Customer")
+                        .WithMany("Login")
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("Ass2WebTech.Models.Transaction", b =>
+                {
+                    b.HasOne("Ass2WebTech.Models.Account", "Account")
+                        .WithMany("AccountNumbers")
+                        .HasForeignKey("AccountNumber")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Ass2WebTech.Models.Account", "DestinationAccount")
+                        .WithMany("DestinationAccountNumbers")
+                        .HasForeignKey("DestinationAccountNumber")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("DestinationAccount");
+                });
+
+            modelBuilder.Entity("Ass2WebTech.Models.Account", b =>
+                {
+                    b.Navigation("AccountNumbers");
+
+                    b.Navigation("BillPays");
+
+                    b.Navigation("DestinationAccountNumbers");
+                });
+
             modelBuilder.Entity("Ass2WebTech.Models.Customer", b =>
                 {
-                    b.Navigation("Accounts");
+                    b.Navigation("Account");
+
+                    b.Navigation("Login");
+                });
+
+            modelBuilder.Entity("Ass2WebTech.Models.Payee", b =>
+                {
+                    b.Navigation("BillPay");
                 });
 #pragma warning restore 612, 618
         }
