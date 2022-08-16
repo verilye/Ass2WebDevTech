@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ass2WebTech.Core.Interfaces;
 
-
-namespace Ass2WebTech.Core.Interfaces
+namespace Ass2WebTech.Core
 {
     public interface IUnitOfWork : IDisposable
     {  
@@ -19,8 +19,6 @@ namespace Ass2WebTech.Core.Interfaces
         ILoginRepository Logins {get;}
         IPayeeRepository Payees {get;}
         ITransactionRepository Transactions {get;}
-
-        // Included in unit of work example, look into the keyword further
         Task<int> CommitAsync();
         
     }
