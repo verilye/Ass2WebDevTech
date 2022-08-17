@@ -13,17 +13,22 @@ namespace Ass2WebTech.Data.Repositories
             _context = context;
         }
 
-        public Task<Login> CreateLogin()
+        public async Task<Login> CreateLogin(Login login)
         {
-            throw new NotImplementedException();
+
+            await _context.Logins
+                .AddAsync(login);
+
+            return login;
         }
 
-        public Task<Login> GetLoginById()
+        public async Task<Login?> GetLoginById(string id)
         {
-            throw new NotImplementedException();
+            return await _context.Logins
+                .SingleOrDefaultAsync(l =>l.LoginID == id);
         }
 
-        public Task<Login> UpdateLogin()
+        public Task<Login> UpdateLogin(string id)
         {
             throw new NotImplementedException();
         }

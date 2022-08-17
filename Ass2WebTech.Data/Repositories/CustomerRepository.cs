@@ -13,9 +13,13 @@ namespace Ass2WebTech.Data.Repositories
             _context = context;
         }
 
-        public Task<Customer> CreateCustomer()
-        {
-            throw new NotImplementedException();
+        public async Task<Customer> CreateCustomer(Customer customer)
+        {  
+             
+            await _context.Customers
+                .AddAsync(customer);
+
+            return customer;
         }
 
         public Task<Customer> GetCustomerById()

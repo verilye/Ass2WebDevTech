@@ -5,7 +5,18 @@ namespace Ass2WebTech.Models
 {
     public class Transaction
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity),Required]
+        public Transaction(TransactionType transactionType, int accountNumber, double amount, DateTime transactionTimeUtc, int destinationAccountNumber) 
+        {
+        
+        this.TransactionType = transactionType;
+        this.AccountNumber = accountNumber;
+        this.Amount = amount;
+        this.TransactionTimeUtc = transactionTimeUtc;
+        this.DestinationAccountNumber = destinationAccountNumber;
+   
+        }
+
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TransactionID{ get; set;}
 
         [Required]
@@ -15,7 +26,7 @@ namespace Ass2WebTech.Models
         public int AccountNumber { get; set; }
 
         [ForeignKey("DestinationAccountNumbers")]
-        public int ?DestinationAccountNumber{ get; set; }
+        public int DestinationAccountNumber{ get; set; }
 
         [Required,Range(0,Double.MaxValue)]
         public double Amount { get; set; }

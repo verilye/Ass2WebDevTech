@@ -5,11 +5,20 @@ namespace Ass2WebTech.Models
 {
     public class Account
     {
-        [Key, MaxLength(4), MinLength(4), Required]
+
+        public Account(int accountNumber, char accountType, int customerID, double balance) 
+        {
+            this.AccountNumber = accountNumber;
+            this.AccountType = accountType;
+            this.CustomerID = customerID;
+            this.Balance = balance;
+        }
+        
+        [Key, MaxLength(4), MinLength(4), Required][DatabaseGeneratedAttribute(DatabaseGeneratedOption.None)]
         public int AccountNumber { get; set; }
 
         [Required]
-        public AccountType AccountType { get; set; }
+        public char AccountType { get; set; }
 
         [Required]
         public int CustomerID { get; set; }
@@ -28,6 +37,8 @@ namespace Ass2WebTech.Models
         
         [ForeignKey("DestinationAccountNumber")]
         public ICollection<Transaction> DestinationAccountNumbers{get;set;}
+
+       
 
 
 

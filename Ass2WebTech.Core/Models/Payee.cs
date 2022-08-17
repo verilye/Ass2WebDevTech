@@ -19,8 +19,7 @@ namespace Ass2WebTech.Models
         public string PostCode { get; set; }
         [Required, RegularExpression("\\(04\\)\\s\\d\\d\\d\\d\\s\\d\\d\\d\\d")]
         public string Phone { get; set; }
-        
-
+    
         [ForeignKey("PayeeID")]
         public ICollection<BillPay> BillPay{get;set;}
 

@@ -25,14 +25,12 @@ namespace Ass2WebTech.Data.Migrations
             modelBuilder.Entity("Ass2WebTech.Models.Account", b =>
                 {
                     b.Property<int>("AccountNumber")
-                        .ValueGeneratedOnAdd()
                         .HasMaxLength(4)
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AccountNumber"), 1L, 1);
-
-                    b.Property<int>("AccountType")
-                        .HasColumnType("int");
+                    b.Property<string>("AccountType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<double>("Balance")
                         .HasColumnType("float");
@@ -82,11 +80,8 @@ namespace Ass2WebTech.Data.Migrations
             modelBuilder.Entity("Ass2WebTech.Models.Customer", b =>
                 {
                     b.Property<int>("CustomerID")
-                        .ValueGeneratedOnAdd()
                         .HasMaxLength(4)
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerID"), 1L, 1);
 
                     b.Property<string>("Address")
                         .HasMaxLength(50)
@@ -105,9 +100,9 @@ namespace Ass2WebTech.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("PostCode")
+                    b.Property<int?>("PostCode")
                         .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                        .HasColumnType("int");
 
                     b.Property<int>("State")
                         .HasColumnType("int");
@@ -124,6 +119,7 @@ namespace Ass2WebTech.Data.Migrations
             modelBuilder.Entity("Ass2WebTech.Models.Login", b =>
                 {
                     b.Property<string>("LoginID")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(8)
                         .HasColumnType("nvarchar(8)");
 
@@ -137,7 +133,8 @@ namespace Ass2WebTech.Data.Migrations
 
                     b.HasKey("LoginID");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("CustomerID")
+                        .IsUnique();
 
                     b.ToTable("Logins");
                 });
@@ -199,8 +196,7 @@ namespace Ass2WebTech.Data.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int?>("DestinationAccountNumber")
-                        .IsRequired()
+                    b.Property<int>("DestinationAccountNumber")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("TransactionTimeUtc")
@@ -221,7 +217,7 @@ namespace Ass2WebTech.Data.Migrations
             modelBuilder.Entity("Ass2WebTech.Models.Account", b =>
                 {
                     b.HasOne("Ass2WebTech.Models.Customer", "Customer")
-                        .WithMany("Account")
+                        .WithMany("Accounts")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -251,8 +247,8 @@ namespace Ass2WebTech.Data.Migrations
             modelBuilder.Entity("Ass2WebTech.Models.Login", b =>
                 {
                     b.HasOne("Ass2WebTech.Models.Customer", "Customer")
-                        .WithMany("Login")
-                        .HasForeignKey("CustomerID")
+                        .WithOne("Login")
+                        .HasForeignKey("Ass2WebTech.Models.Login", "CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -289,9 +285,10 @@ namespace Ass2WebTech.Data.Migrations
 
             modelBuilder.Entity("Ass2WebTech.Models.Customer", b =>
                 {
-                    b.Navigation("Account");
+                    b.Navigation("Accounts");
 
-                    b.Navigation("Login");
+                    b.Navigation("Login")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Ass2WebTech.Models.Payee", b =>

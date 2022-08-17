@@ -16,7 +16,8 @@ import{
     chakra,
     Button,
     Container,
-    Stack
+    Stack,
+    Input
 
 } from '@chakra-ui/react';
 import React from 'react';
@@ -25,6 +26,8 @@ import SplashNav from '../header/navbar';
 
 
 export interface LoginDetails{
+    username:string;
+    password:string;
 
 }
 
@@ -34,12 +37,40 @@ export interface SplashProps {
 
 }
 
+
 export function Splash(props: SplashProps){
+
+    const [username, setUser] = useState('');
+    const [password, setPassword] = useState('');
+
+    const usernameOnChange = (event) => {
+        setUser(event.target.value);
+      };
+    const passwordOnChange = (event) => {
+    setPassword(event.target.value);
+    };
+
+
+    const onLogin = () =>{
+
+        const loginDetails: LoginDetails ={
+            username:username,
+            password: password,
+        };
+    
+        props.onLogin(loginDetails);
+        setUser('');
+        setPassword('');
+    
+    }
+
+
+
     return(
 
         <div className='Splash-Page'>
             <div>
-                <Box as={Container} maxW="7xl" mt={14} p={200} pt={300}>
+                <Box backgroundColor={"white"} as={Container} maxW="7xl" mt={14} p={200} pt={300}>
                     <Grid
                         templateColumns={{
                         base: 'repeat(1, 1fr)',
@@ -52,9 +83,25 @@ export function Splash(props: SplashProps){
                             <chakra.h1 fontSize="4xl" fontWeight="700">
                                 MCBA Bank
                             </chakra.h1>
-                            <Button colorScheme="blue" size="md"  onClick={props.onLogin}>
-                                Login
-                            </Button>
+                            <FormControl>
+                                <Input
+                                    name = "username"
+                                    placeholder="User name"
+                                    onChange ={usernameOnChange}
+                                    type="username"
+                                    id="username"
+                                />
+                                <Input
+                                    name = "password"
+                                    placeholder="Password"
+                                    onChange ={passwordOnChange}
+                                    type="password"
+                                    id="password"
+                                />
+                                 <Button colorScheme="blue" size="md"  onClick ={onLogin} id="login">
+                                    Login
+                                </Button>
+                            </FormControl>
                         </VStack>
                         </GridItem>
                         <GridItem>

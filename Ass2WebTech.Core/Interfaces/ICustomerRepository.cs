@@ -10,6 +10,6 @@ namespace Ass2WebTech.Core.Interfaces
     {
         Task<Customer> GetCustomerById();
         Task<Customer> UpdateCustomer();
-        Task<Customer> CreateCustomer();
+        Task<Customer> CreateCustomer(Customer customer);
     }
 }

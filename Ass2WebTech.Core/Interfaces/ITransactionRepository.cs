@@ -10,7 +10,7 @@ namespace Ass2WebTech.Core.Interfaces
     {
         Task<Transaction> GetTransactionById();
         Task<Transaction> GetAllTransactionsByAccount();
-        Task<Transaction> CreateTransaction();
+        Task<Transaction> CreateTransaction(Transaction transaction);
 
     }
 }

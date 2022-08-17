@@ -14,10 +14,8 @@ import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
 
 
 interface LogInDetails {
-  userID: number;
-  userEmail: string;
-  userEmailVerified: boolean;
-  userPostCode: number;
+  username:string;
+  password:string;
 }
 
 
@@ -40,6 +38,7 @@ function App() {
     setSplashVisible(false)} ;
 
   const onLogout = () => { setHomeVisible(false)
+    setNavVisible(false)
     setSplashVisible(true)} ;
 
   const [depositDisabled, setDepositDisabled] = useState(false);
@@ -67,14 +66,30 @@ function App() {
   
   const onLogin = (props:LogInDetails) =>{ 
       
+    fetch('http://localhost:5213/api/Login/preload', {
+      method:'GET',
+      headers: { "content-type": "application/json" },
+      
+    }).then(response => response.json())
+
+
+    
+    fetch('http://localhost:5213/api/Login', {
+      method:'POST',
+      headers: { "content-type": "application/json" },
+      
+      body: JSON.stringify(
+        {username : props.username,
+         password : props.password})
+      
+    }).then(response => response.json())
+
+
+
     setSplashVisible(false);
     setNavVisible(true);
     setHomeVisible(true);
-
-    fetch('http://localhost:5213/api/Login', {
-      method:'GET'
-    }
-    )
+    return 
   }
 
 

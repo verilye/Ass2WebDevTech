@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NUzMstUb4e3DU/L2vNkzYi8l2kjaF41eYXjkak9w8Qhifsn3f3uYYhV2GOInw8xk/gDpznDJ6jLrj5/G1Mz/rA==",
+  "dgSpecHash": "lc/zDuwLNkSoIxiDrYiXGpbIvRb2kNqa5A83C63LmSRSplICAvmgJ012wD9LJGbTElHL7/M7i6pjac04NuCCpw==",
   "success": true,
   "projectFilePath": "C:\\Users\\conno\\Desktop\\Ass2WebTech\\Ass2WebTech.Services\\Ass2WebTech.Services.csproj",
   "expectedPackageFiles": [
@@ -51,6 +51,9 @@
     "C:\\Users\\conno\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\conno\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\conno\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\conno\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\conno\\.nuget\\packages\\simplehashing\\2.0.0.1\\simplehashing.2.0.0.1.nupkg.sha512",
+    "C:\\Users\\conno\\.nuget\\packages\\simplehashing.net\\2.1.0\\simplehashing.net.2.1.0.nupkg.sha512",
     "C:\\Users\\conno\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\conno\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.0\\system.configuration.configurationmanager.6.0.0.nupkg.sha512",
     "C:\\Users\\conno\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

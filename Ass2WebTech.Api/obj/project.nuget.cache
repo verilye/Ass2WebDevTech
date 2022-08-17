@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aJydSaC5oaWAUbS8KW19N4BlRm7JEAM/qGAzIhhpoLKlYJW+6frTV9CNxTnw4NAJLQs/2h7TY8R0m6epmcdAFw==",
+  "dgSpecHash": "r/O0yAefsj1bFTa/3t/mGFPV04J7zXb1a7+IApH2hCKInW+6LC3Grkc6AmkJqiB3QjAKti/1NbTxfQkXvBSOwA==",
   "success": true,
   "projectFilePath": "C:\\Users\\conno\\Desktop\\Ass2WebTech\\Ass2WebTech.Api\\Ass2WebTech.Api.csproj",
   "expectedPackageFiles": [
@@ -53,6 +53,9 @@
     "C:\\Users\\conno\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\conno\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\conno\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\conno\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\conno\\.nuget\\packages\\simplehashing\\2.0.0.1\\simplehashing.2.0.0.1.nupkg.sha512",
+    "C:\\Users\\conno\\.nuget\\packages\\simplehashing.net\\2.1.0\\simplehashing.net.2.1.0.nupkg.sha512",
     "C:\\Users\\conno\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\conno\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\conno\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

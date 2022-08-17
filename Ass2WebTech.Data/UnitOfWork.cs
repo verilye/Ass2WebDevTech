@@ -8,28 +8,38 @@ namespace Ass2WebTech.Data
     {
         private readonly BankContext _context;
         private AccountRepository _accountRepository;
+        private LoginRepository _loginRepository;
+        private BillPayRepository _billPayRepository;
+        private CustomerRepository _customerRepository;
+        private PayeeRepository _payeeRepository;
+        private TransactionRepository _transactionRepository;
+
+        public UnitOfWork(BankContext context)
+        {
+            _context = context;
+        }
         
 
         public IAccountRepository Accounts => _accountRepository = _accountRepository ?? new AccountRepository(_context);
 
-        public IBillPayRepository BillPays => throw new NotImplementedException();
+        public IBillPayRepository BillPays => _billPayRepository = _billPayRepository ?? new BillPayRepository(_context);
 
-        public ICustomerRepository Customers => throw new NotImplementedException();
+        public ICustomerRepository Customers => _customerRepository = _customerRepository ?? new CustomerRepository(_context);
 
-        public ILoginRepository Logins => throw new NotImplementedException();
+        public ILoginRepository Logins => _loginRepository = _loginRepository ?? new LoginRepository(_context);
 
-        public IPayeeRepository Payees => throw new NotImplementedException();
+        public IPayeeRepository Payees => _payeeRepository = _payeeRepository ?? new PayeeRepository(_context);
 
-        public ITransactionRepository Transactions => throw new NotImplementedException();
+        public ITransactionRepository Transactions => _transactionRepository = _transactionRepository ?? new TransactionRepository(_context);
 
-        public Task<int> CommitAsync()
+        public async Task<int> CommitAsync()
         {
-            throw new NotImplementedException();
+            return await _context.SaveChangesAsync();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _context.Dispose();
         }
     }
 }

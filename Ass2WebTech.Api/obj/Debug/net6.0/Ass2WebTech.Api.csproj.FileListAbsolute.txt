@@ -70,3 +70,6 @@ C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Api\bin\Debug\net6.0\Microsoft.Ex
 C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Api\bin\Debug\net6.0\Microsoft.Extensions.Configuration.UserSecrets.dll
 C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Api\bin\Debug\net6.0\Microsoft.Extensions.Hosting.dll
 C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Api\bin\Debug\net6.0\Ass2WebTech.Api.staticwebassets.runtime.json
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Api\bin\Debug\net6.0\SimpleHashing.dll
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Api\bin\Debug\net6.0\SimpleHashing.Net.dll
+C:\Users\conno\Desktop\Ass2WebTech\Ass2WebTech.Api\bin\Debug\net6.0\Newtonsoft.Json.dll

@@ -8,9 +8,8 @@ namespace Ass2WebTech.Core.Interfaces
 {
     public interface ILoginRepository
     {
-        Task<Login> GetLoginById();
-        Task<Login> UpdateLogin();
-
-        Task<Login> CreateLogin();
+        Task<Login?> GetLoginById(string id);
+        Task<Login> UpdateLogin(string id);
+        Task<Login> CreateLogin(Login login);
     }
 }

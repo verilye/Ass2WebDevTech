@@ -13,9 +13,12 @@ namespace Ass2WebTech.Data.Repositories
             _context = context;
         }
 
-        public Task<Transaction> CreateTransaction()
+        public async Task<Transaction> CreateTransaction(Transaction transaction)
         {
-            throw new NotImplementedException();
+             await _context.Transactions
+                .AddAsync(transaction);
+
+            return transaction;
         }
 
         public Task<Transaction> GetAllTransactionsByAccount()

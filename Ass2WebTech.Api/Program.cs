@@ -1,4 +1,7 @@
+using Ass2WebTech.Core;
+using Ass2WebTech.Core.Services;
 using Ass2WebTech.Data;
+using Ass2WebTech.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using ConfigurationManager = System.Configuration.ConfigurationManager;
@@ -31,6 +34,11 @@ builder.Services.AddCors(options =>
       .Build()
    );
 });
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddTransient<IUserService, UserService>();
+
+
 
 
 var app = builder.Build();
