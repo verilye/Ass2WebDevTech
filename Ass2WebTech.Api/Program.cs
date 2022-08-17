@@ -20,6 +20,18 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
 builder.Services.AddDbContext<BankContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("Default")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyCorsPolicy",
+   builder => builder
+      .SetIsOriginAllowedToAllowWildcardSubdomains()
+      .WithOrigins("*")
+      .AllowAnyMethod()
+      .AllowAnyHeader()
+      .Build()
+   );
+});
+
 
 var app = builder.Build();
 
@@ -29,6 +41,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("MyCorsPolicy");
 
 app.UseHttpsRedirection();
 

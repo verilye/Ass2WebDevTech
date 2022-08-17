@@ -71,6 +71,10 @@ function App() {
     setNavVisible(true);
     setHomeVisible(true);
 
+    fetch('http://localhost:5213/api/Login', {
+      method:'GET'
+    }
+    )
   }
 
 
