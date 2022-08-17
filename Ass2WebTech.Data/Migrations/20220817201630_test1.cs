@@ -120,7 +120,7 @@ namespace Ass2WebTech.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TransactionType = table.Column<int>(type: "int", nullable: false),
                     AccountNumber = table.Column<int>(type: "int", nullable: false),
-                    DestinationAccountNumber = table.Column<int>(type: "int", nullable: false),
+                    DestinationAccountNumber = table.Column<int>(type: "int", nullable: true),
                     Amount = table.Column<double>(type: "float", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     TransactionTimeUtc = table.Column<DateTime>(type: "datetime2", nullable: false)

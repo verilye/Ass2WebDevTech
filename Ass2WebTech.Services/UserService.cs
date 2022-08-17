@@ -24,6 +24,13 @@ namespace Ass2WebTech.Services
 
         public async Task Preload()
         {
+
+            if(_unitOfWork.Customers.CheckForCustomers())
+            { 
+                Console.WriteLine("Skipped preloading data");
+                return;
+            }
+            
             try
             {
                 HttpResponseMessage response = await client.GetAsync("https://coreteaching01.csit.rmit.edu.au/~e103884/wdt/services/customers/");
@@ -33,36 +40,39 @@ namespace Ass2WebTech.Services
 
                 var customers = JsonConvert.DeserializeObject<List<Customer>>(responseBody);
 
-                foreach (var customer in customers)
+                foreach (var customer in customers.ToList())
                 {
                     
         
                     Customer cust = new Customer(customer.City, customer.Name, customer.CustomerID, 
                         customer.Address);
-                    await _unitOfWork.Customers.CreateCustomer(cust);
-                    await _unitOfWork.CommitAsync();
+                    await  _unitOfWork.Customers.CreateCustomer(cust);
+                    // await _unitOfWork.CommitAsync();
 
                     Login log = new Login(customer.Login.LoginID, customer.CustomerID,customer.Login.PasswordHash);
 
                     await _unitOfWork.Logins.CreateLogin(log);
-                    await _unitOfWork.CommitAsync();
+                    // await _unitOfWork.CommitAsync();
 
-                    foreach (var account in customer.Accounts)
+                    
+                    foreach (var account in customer.Accounts.ToList())
                     {
                 
                         await _unitOfWork.Accounts.CreateAccount(account);
-                        await _unitOfWork.CommitAsync();
+                        // await _unitOfWork.CommitAsync();
 
-                        foreach (var transaction in account.AccountNumbers)
+                        foreach (var transaction in account.Transactions.ToList())
                         {
-                            Transaction trans = new Transaction( TransactionType.Deposit, transaction.AccountNumber, transaction.Amount
-                                , transaction.TransactionTimeUtc,  transaction.DestinationAccountNumber);
-                            await _unitOfWork.Transactions.CreateTransaction(trans);
-                            await _unitOfWork.CommitAsync();
+                            // Transaction trans = new Transaction( TransactionType.Deposit, transaction.AccountNumber, transaction.Amount
+                            //     , transaction.TransactionTimeUtc,  transaction.DestinationAccountNumber);
+                            await _unitOfWork.Transactions.CreateTransaction(transaction);
+                            // await _unitOfWork.CommitAsync();
                         }
                     }
 
                 }
+
+                await _unitOfWork.CommitAsync();
                 Console.WriteLine("DONESKI");
             }
             catch (HttpRequestException e)

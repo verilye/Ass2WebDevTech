@@ -16,7 +16,6 @@ namespace Ass2WebTech.Models
         
         [Key, MaxLength(4), MinLength(4), Required][DatabaseGeneratedAttribute(DatabaseGeneratedOption.None)]
         public int AccountNumber { get; set; }
-
         [Required]
         public char AccountType { get; set; }
 
@@ -30,12 +29,9 @@ namespace Ass2WebTech.Models
 
         [ForeignKey("AccountNumber")]
         public ICollection<BillPay> BillPays{get;set;}
-
-
-        [ForeignKey("AccountNumber")]
-        public ICollection<Transaction> AccountNumbers{get;set;}
         
-        [ForeignKey("DestinationAccountNumber")]
+        public ICollection<Transaction> Transactions {get;set;}
+        
         public ICollection<Transaction> DestinationAccountNumbers{get;set;}
 
        

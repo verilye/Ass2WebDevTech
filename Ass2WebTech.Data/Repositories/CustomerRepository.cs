@@ -31,5 +31,12 @@ namespace Ass2WebTech.Data.Repositories
         {
             throw new NotImplementedException();
         }
+        public bool CheckForCustomers()
+        {
+            return  _context.Customers.Any();
+        }
+
+
+        
     }
 }

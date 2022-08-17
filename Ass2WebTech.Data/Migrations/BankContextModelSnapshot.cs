@@ -196,7 +196,7 @@ namespace Ass2WebTech.Data.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int>("DestinationAccountNumber")
+                    b.Property<int?>("DestinationAccountNumber")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("TransactionTimeUtc")
@@ -258,7 +258,7 @@ namespace Ass2WebTech.Data.Migrations
             modelBuilder.Entity("Ass2WebTech.Models.Transaction", b =>
                 {
                     b.HasOne("Ass2WebTech.Models.Account", "Account")
-                        .WithMany("AccountNumbers")
+                        .WithMany("Transactions")
                         .HasForeignKey("AccountNumber")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -266,8 +266,7 @@ namespace Ass2WebTech.Data.Migrations
                     b.HasOne("Ass2WebTech.Models.Account", "DestinationAccount")
                         .WithMany("DestinationAccountNumbers")
                         .HasForeignKey("DestinationAccountNumber")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Account");
 
@@ -276,11 +275,11 @@ namespace Ass2WebTech.Data.Migrations
 
             modelBuilder.Entity("Ass2WebTech.Models.Account", b =>
                 {
-                    b.Navigation("AccountNumbers");
-
                     b.Navigation("BillPays");
 
                     b.Navigation("DestinationAccountNumbers");
+
+                    b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("Ass2WebTech.Models.Customer", b =>

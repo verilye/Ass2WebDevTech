@@ -24,14 +24,14 @@ namespace Ass2WebTech.Data
 
                 modelBuilder.Entity<Transaction>()
                         .HasOne(a => a.Account)
-                        .WithMany(t => t.AccountNumbers)
-                        .HasForeignKey(t => t.AccountNumber)
+                        .WithMany(t => t.Transactions)
+                        .HasForeignKey(a => a.AccountNumber)
                         .OnDelete(DeleteBehavior.NoAction);
 
                 modelBuilder.Entity<Transaction>()
                         .HasOne(a => a.DestinationAccount)
                         .WithMany(t => t.DestinationAccountNumbers)
-                        .HasForeignKey(t => t.DestinationAccountNumber)
+                        .HasForeignKey(a => a.DestinationAccountNumber)
                         .OnDelete(DeleteBehavior.NoAction);
 
                 modelBuilder.Entity<BillPay>()
