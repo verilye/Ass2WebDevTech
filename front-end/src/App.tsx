@@ -18,8 +18,14 @@ interface LogInDetails {
   password:string;
 }
 
+interface UserDetails{
+  customerId:string;
+}
+
 
 function App() {
+
+  var user = "";
 
   const [splashVisible, setSplashVisible] = useState(true);
   const [navbarVisible, setNavVisible] = useState(false);
@@ -61,8 +67,6 @@ function App() {
   const onShowProfile = () => setProfileVisible(true);
   const onProfileClose = () => setProfileVisible(false);
 
-
-
   
   const onLogin = (props:LogInDetails) =>{ 
       
@@ -70,10 +74,10 @@ function App() {
       method:'GET',
       headers: { "content-type": "application/json" },
       
-    }).then(response => response.json())
-
+    }).then(response => response.json());
 
     
+  
     fetch('http://localhost:5213/api/Login', {
       method:'POST',
       headers: { "content-type": "application/json" },
@@ -82,14 +86,30 @@ function App() {
         {username : props.username,
          password : props.password})
       
-    }).then(response => response.json())
+    }).then((response) => {
+
+        if(response.ok){
+          return response.json();
+        }
+
+        throw new Error('Something went wrong');
+          
+    }).then((responseJson)=> {
+
+      console.log(responseJson);
+
+      user = responseJson.AccountID;
+
+      setSplashVisible(false);
+      setNavVisible(true);
+      setHomeVisible(true);
+      return 
+        
+    }).catch((error) => {
+      console.log(error)
+    });
 
 
-
-    setSplashVisible(false);
-    setNavVisible(true);
-    setHomeVisible(true);
-    return 
   }
 
 

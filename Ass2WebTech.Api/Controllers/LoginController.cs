@@ -33,9 +33,13 @@ namespace Ass2WebTech.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Login>> SignIn(PostReq req)
         {
-
+            
             var result = await _userService.Login(req.username,req.password);
+
+            Console.WriteLine(result);
+
             return result;
+            
         }
 
 

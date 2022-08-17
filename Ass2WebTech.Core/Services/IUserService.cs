@@ -12,6 +12,7 @@ namespace Ass2WebTech.Core.Services
         //TODO
         Task Preload();
         Task<Login> Login(string user, string pass);
+        Task<IEnumerable<Account>> DisplayAccounts(int accountId);
         Task<Login> Logout();
         Task<Transaction> Deposit();
         Task<Transaction> Transfer();

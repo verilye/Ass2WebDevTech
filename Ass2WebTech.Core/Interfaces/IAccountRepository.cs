@@ -13,6 +13,8 @@ namespace Ass2WebTech.Core.Interfaces
         Task<IEnumerable<Account>> GetAccountsByCustomerId(int id);
 
         Task<Account> CreateAccount(Account account);
+
+        Task<Account> UpdateBalance(int id, double amount);
     
     }
 }

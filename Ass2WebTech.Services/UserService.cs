@@ -87,18 +87,27 @@ namespace Ass2WebTech.Services
 
         public async Task<Login> Login(string user, string pass)
         {
+
             var result = await _unitOfWork.Logins.GetLoginById(user);
                         await _unitOfWork.CommitAsync();
 
             if(result == null)
-            return null;
+            {
+                return null;
+            }
 
             //Use PBKDF2.Verify(passwordHash, password) to verify password is correct
 
-            // bool isPasswordValid = PBKDF2.Verify(result.PasswordHash, pass);
+            bool isPasswordValid = PBKDF2.Verify(result.PasswordHash, pass);
 
-
-            return result;
+            if(isPasswordValid)
+            {
+                return result;
+            } else
+            {
+                return null;
+            }
+            
 
         }
 
@@ -132,5 +141,9 @@ namespace Ass2WebTech.Services
             throw new NotImplementedException();
         }
 
+        public async Task<IEnumerable<Account>> DisplayAccounts(int accountId)
+        {
+            return await _unitOfWork.Accounts.GetAccountsByCustomerId(accountId);
+        }
     }
 }
