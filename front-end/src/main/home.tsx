@@ -20,6 +20,7 @@ import{
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { json } from 'stream/consumers';
+import Accounts from '../components/Accounts';
 // import Accounts from '../components/Accounts';
 import { Navbar } from '../header/navbar';
 
@@ -32,18 +33,24 @@ export interface HomeProps {
 
 }
 
+interface Account {
+    AccountNumber:string;
+    AccountType:string;
+    CustomerID:string;
+    Balance:string;
+}
+
 export function Home(props: HomeProps){
 
-    const [accounts,setAccounts] = useState([]);
+    const [accounts,setAccounts] = useState<string[]>([]);
     const [loading, setLoading] = useState(false); 
     const [currentPage, setCurrentPage] = useState(1);
     const [accountsPerPage, setAccountsPetPage] = useState(10);
 
     useEffect(() =>{
-        const fetchAccounts = async ()=>{
+        const fetchAccounts = ()=>{
             setLoading(true);
 
-            var data;
 
             fetch('http://localhost:5213/api/Home', {
                 method:'POST',
@@ -51,18 +58,20 @@ export function Home(props: HomeProps){
                 body: JSON.stringify({
                     id : sessionStorage.getItem("user")
                 })
-              }).then (response => response.json)
-                .then (json => {data = json;})
-            console.log(data);
-            setAccounts(data);
+                }).then (response => response.json())
+                .then (body => {
+                    
+                    console.log(body);
+                    setAccounts(body);
+                });
+
+            
+           
             setLoading(false);
         }  
         fetchAccounts();  
             
     },[]);
-
-
-
 
     return(
 
@@ -83,10 +92,9 @@ export function Home(props: HomeProps){
                         }}
                         gap={4}
                         >
-                       {/* <Accounts 
-                            accounts={accounts} 
-                            loading={loading} 
-                        /> */}
+                       <Accounts
+                            data ={accounts}
+                       />
                     </Grid>
                 </Box>
             </div>

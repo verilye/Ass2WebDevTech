@@ -153,6 +153,9 @@ namespace Ass2WebTech.Services
                 Console.WriteLine(i.Balance);
             }
 
+
+            //ADD login to add up value of all transactions
+
             return result;
         }
     }

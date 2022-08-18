@@ -33,7 +33,7 @@ namespace Ass2WebTech.Api.Controllers
 
 
         [HttpPost]
-        public async Task<string> ShowAccounts(PostReq req)
+        public async Task<IEnumerable<Account>> ShowAccounts(PostReq req)
         {
 
             int a = Int32.Parse(req.id);
@@ -46,7 +46,7 @@ namespace Ass2WebTech.Api.Controllers
                 
             Console.WriteLine(json);
 
-            return json;
+            return result;
             
         }
 
