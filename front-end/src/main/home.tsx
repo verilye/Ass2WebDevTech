@@ -51,6 +51,7 @@ export function Home(props: HomeProps){
 
     useEffect(() =>{
         const fetchAccounts = ()=>{
+            
             setLoading(true);
 
 
@@ -73,7 +74,7 @@ export function Home(props: HomeProps){
         }  
         fetchAccounts();  
             
-    },[]);
+    });
 
     return(
 

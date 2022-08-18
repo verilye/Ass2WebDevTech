@@ -63,6 +63,7 @@ namespace Ass2WebTech.Services
 
                         foreach (var transaction in account.Transactions.ToList())
                         {
+
                             Transaction trans = new Transaction('D', transaction.AccountNumber, transaction.Amount
                                 , transaction.TransactionTimeUtc,  transaction.DestinationAccountNumber, transaction.Comment);
 
@@ -124,8 +125,9 @@ namespace Ass2WebTech.Services
             Transaction transaction = new Transaction('D',accountNumber,amount,date, null, comment);
 
             await _unitOfWork.Accounts.AddBalance(accountNumber, amount);
-
-            return await _unitOfWork.Transactions.CreateTransaction(transaction);
+            await _unitOfWork.Transactions.CreateTransaction(transaction);
+            _unitOfWork.CommitAsync();
+            return transaction;
         }
 
         public async Task<Account> Withdraw(int accountId, double amount)

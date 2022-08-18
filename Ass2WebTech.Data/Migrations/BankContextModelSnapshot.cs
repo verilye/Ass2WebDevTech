@@ -204,6 +204,7 @@ namespace Ass2WebTech.Data.Migrations
 
                     b.Property<string>("TransactionType")
                         .IsRequired()
+                        .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
                     b.HasKey("TransactionID");

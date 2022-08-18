@@ -5,7 +5,7 @@ namespace Ass2WebTech.Models
 {
     public class Transaction
     {
-        public Transaction(char transactionType, int accountNumber, double amount, DateTime transactionTimeUtc, int? destinationAccountNumber, string comment) 
+        public Transaction(char transactionType, int accountNumber, double amount, DateTime transactionTimeUtc, int? destinationAccountNumber, string? comment) 
         {
         
         this.TransactionType = transactionType;
@@ -20,7 +20,7 @@ namespace Ass2WebTech.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TransactionID{ get; set;}
 
-        [Required]
+        [Required][MaxLength(1)][MinLength(1)]
         public char TransactionType { get; set; }
 
         [ForeignKey("AccountNumbers")]

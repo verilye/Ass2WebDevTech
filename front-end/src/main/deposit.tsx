@@ -79,7 +79,7 @@ export function Deposit(props: DepositProps) {
         }  
         fetchAccounts();  
             
-    },[]);
+    });
 
     return (
         <Modal isOpen={props.visible} onClose={props.onClose} id="deposit">
@@ -127,7 +127,7 @@ export function Deposit(props: DepositProps) {
                         </Button>
                         <Spacer></Spacer>
                         <Button disabled={props.disabled} onClick={onDeposit} id="deposit">
-                            Register
+                            Deposit
                         </Button>
                     </Flex>
                 </ModalFooter>
