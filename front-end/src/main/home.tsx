@@ -18,7 +18,9 @@ import{
 
 } from '@chakra-ui/react';
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { json } from 'stream/consumers';
+// import Accounts from '../components/Accounts';
 import { Navbar } from '../header/navbar';
 
 
@@ -31,6 +33,37 @@ export interface HomeProps {
 }
 
 export function Home(props: HomeProps){
+
+    const [accounts,setAccounts] = useState([]);
+    const [loading, setLoading] = useState(false); 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [accountsPerPage, setAccountsPetPage] = useState(10);
+
+    useEffect(() =>{
+        const fetchAccounts = async ()=>{
+            setLoading(true);
+
+            var data;
+
+            fetch('http://localhost:5213/api/Home', {
+                method:'POST',
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify({
+                    id : sessionStorage.getItem("user")
+                })
+              }).then (response => response.json)
+                .then (json => {data = json;})
+            console.log(data);
+            setAccounts(data);
+            setLoading(false);
+        }  
+        fetchAccounts();  
+            
+    },[]);
+
+
+
+
     return(
 
         //Paginate account data
@@ -50,17 +83,10 @@ export function Home(props: HomeProps){
                         }}
                         gap={4}
                         >
-                        <GridItem colSpan={1}>
-                            Account 1
-                        </GridItem>
-                        <GridItem>
-                           Account 2
-                        </GridItem>
-                        <GridItem
-                          mt={10}
-                        >
-                           Account 3
-                        </GridItem>
+                       {/* <Accounts 
+                            accounts={accounts} 
+                            loading={loading} 
+                        /> */}
                     </Grid>
                 </Box>
             </div>

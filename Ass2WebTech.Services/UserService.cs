@@ -82,6 +82,8 @@ namespace Ass2WebTech.Services
 
             }
             
+            
+
             return;
         }
 
@@ -143,7 +145,15 @@ namespace Ass2WebTech.Services
 
         public async Task<IEnumerable<Account>> DisplayAccounts(int accountId)
         {
-            return await _unitOfWork.Accounts.GetAccountsByCustomerId(accountId);
+
+            var result = await _unitOfWork.Accounts.GetAccountsByCustomerId(accountId);
+
+            foreach(var i in result)
+            {
+                Console.WriteLine(i.Balance);
+            }
+
+            return result;
         }
     }
 }

@@ -28,12 +28,14 @@ namespace Ass2WebTech.Data.Repositories
 
         }
 
-        public async Task<IEnumerable<Account>> GetAccountsByCustomerId(int id)
+        public async Task<List<Account>> GetAccountsByCustomerId(int id)
         {
-            
-            return await _context.Accounts
-                .Where(x => x.CustomerID == id)
+            var result = await _context.Accounts
+                .Where(x => x.CustomerID.Equals(id))
                 .ToListAsync();
+
+            return result;
+
         }
 
         public async Task<Account> UpdateBalance(int id, double amount)

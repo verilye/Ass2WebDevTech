@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Ass2WebTech.Services;
 using Ass2WebTech.Models;
 using Ass2WebTech.Core.Services;
+using System.Text.Json;
 using Newtonsoft.Json;
 
 namespace Ass2WebTech.Api.Controllers
@@ -13,12 +14,12 @@ namespace Ass2WebTech.Api.Controllers
 
     [ApiController]
     [Route("api/[controller]")]
-    public class LoginController : ControllerBase
+    public class HomeController : ControllerBase
     {
         private readonly IUserService _userService;
         
 
-        public LoginController(IUserService userService)
+        public HomeController(IUserService userService)
         {
             _userService = userService;
         }
@@ -26,28 +27,27 @@ namespace Ass2WebTech.Api.Controllers
 
         public class PostReq
         {
-            public string username {get;set;}
-            public string password {get;set;}
+            public string id {get;set;}
+        
         }
+
 
         [HttpPost]
-        public async Task<ActionResult<Login>> SignIn(PostReq req)
-        {
-            
-            var result = await _userService.Login(req.username,req.password);
-
-            return result;
-            
-        }
-
-
-        [HttpGet]
-        [Route("preload")]
-        public async Task Preload()
+        public async Task<string> ShowAccounts(PostReq req)
         {
 
-            await _userService.Preload();
-            return ;
+            int a = Int32.Parse(req.id);
+
+            Console.WriteLine(a);
+            
+            var result = await _userService.DisplayAccounts(a);
+
+            var json = JsonConvert.SerializeObject(result);
+                
+            Console.WriteLine(json);
+
+            return json;
+            
         }
 
     }

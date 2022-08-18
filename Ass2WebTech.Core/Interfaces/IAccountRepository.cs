@@ -10,7 +10,7 @@ namespace Ass2WebTech.Core.Interfaces
     {
         Task<Account?> GetAccountById(int id);
 
-        Task<IEnumerable<Account>> GetAccountsByCustomerId(int id);
+        Task<List<Account>> GetAccountsByCustomerId(int id);
 
         Task<Account> CreateAccount(Account account);
 

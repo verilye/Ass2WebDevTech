@@ -25,7 +25,7 @@ interface UserDetails{
 
 function App() {
 
-  var user = "";
+  var user = sessionStorage.getItem("user");
 
   const [splashVisible, setSplashVisible] = useState(true);
   const [navbarVisible, setNavVisible] = useState(false);
@@ -98,7 +98,7 @@ function App() {
 
       console.log(responseJson);
 
-      user = responseJson.AccountID;
+      sessionStorage.setItem("user", responseJson.customerID);
 
       setSplashVisible(false);
       setNavVisible(true);
