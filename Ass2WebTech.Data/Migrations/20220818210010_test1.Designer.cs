@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ass2WebTech.Data.Migrations
 {
     [DbContext(typeof(BankContext))]
-    [Migration("20220818205545_test1")]
+    [Migration("20220818210010_test1")]
     partial class test1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

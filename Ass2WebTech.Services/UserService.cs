@@ -65,7 +65,8 @@ namespace Ass2WebTech.Services
                         {
                             Transaction trans = new Transaction('D', transaction.AccountNumber, transaction.Amount
                                 , transaction.TransactionTimeUtc,  transaction.DestinationAccountNumber, transaction.Comment);
-                            await _unitOfWork.Transactions.CreateTransaction(trans);
+
+                            // await _unitOfWork.Transactions.CreateTransaction(trans);
                             await _unitOfWork.CommitAsync();
                             await _unitOfWork.Accounts.AddBalance(transaction.AccountNumber,transaction.Amount);
                             // await _unitOfWork.CommitAsync();
