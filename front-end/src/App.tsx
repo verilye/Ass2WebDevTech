@@ -1,7 +1,6 @@
 import * as React from 'react'
 import './App.css';
 import { useState } from 'react';
-import Login from './forms/login-form';
 import Splash from './main/splash';
 import Home from './main/home';
 import Deposit from './main/deposit';
@@ -99,6 +98,7 @@ function App() {
       console.log(responseJson);
 
       sessionStorage.setItem("user", responseJson.customerID);
+      sessionStorage.setItem("name", responseJson.name);
 
       setSplashVisible(false);
       setNavVisible(true);

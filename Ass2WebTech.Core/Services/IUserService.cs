@@ -14,10 +14,11 @@ namespace Ass2WebTech.Core.Services
         Task<Login> Login(string user, string pass);
         Task<IEnumerable<Account>> DisplayAccounts(int accountId);
         Task<Login> Logout();
-        Task<Transaction> Deposit();
-        Task<Transaction> Transfer();
-        Task<IEnumerable<Account>> MyStatements();
-        Task<Customer> MyProfile();
+        Task<Account> Deposit(int accountId, double amount);
+        Task<Account> Withdraw(int accountId, double amount);
+        Task<Transaction> Transfer(Transaction transaction);
+        Task<IEnumerable<Account>> MyStatements(int customerId);
+        Task<Customer> MyProfile(int customerId);
         Task<IEnumerable<BillPay>> BillPay();
 
 

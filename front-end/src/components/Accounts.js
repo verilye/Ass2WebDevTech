@@ -1,4 +1,4 @@
-import { GridItem } from "@chakra-ui/react";
+import { Box, GridItem } from "@chakra-ui/react";
 
 // interface Account {
 //     AccountNumber:string;
@@ -9,16 +9,31 @@ import { GridItem } from "@chakra-ui/react";
 
 
 
-const Accounts = ({data}) =>{
+const Accounts = ({data, loading}) =>{
+
+    if(loading){
+        return <h2>Loading...</h2>
+    }
 
     return(
-        <ul>
+        <GridItem>
             {data.map(account =>(
-                <li key={account.accountNumber}>
-                    {account.balance}
-                </li>
+                    
+                    <div key={account.accountNumber}>
+                        <Box bg ='white' maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' mt='1' fontWeight='semibold'>
+                            Account Number:{account.accountNumber}
+                        <br/>
+                        </Box>
+                        <Box bg='lightblue' maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+                            Type: {account.accountType}
+                        <br/>
+                            Balance : {account.balance}
+                        </Box>
+                        
+                    </div>
+                     
             ))}
-        </ul>
+        </GridItem>
     );
 };
 

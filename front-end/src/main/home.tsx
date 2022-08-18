@@ -33,6 +33,8 @@ export interface HomeProps {
 
 }
 
+var name = sessionStorage.getItem("user");
+
 interface Account {
     AccountNumber:string;
     AccountType:string;
@@ -81,8 +83,8 @@ export function Home(props: HomeProps){
         <div className='Home-Page'>
 
             <div>
-                <Box as={Container} maxW="7xl" mt={5} pt={100} pb={500}>
-                    Accounts
+                <Box as={Container} maxW="7xl" mt={5} pt={100} pb={500} fontWeight='semibold' fontSize={20}>
+                    ACCOUNTS
                     <Divider mt={12} mb={12} />
                     <Grid
                         templateColumns={{
@@ -94,6 +96,7 @@ export function Home(props: HomeProps){
                         >
                        <Accounts
                             data ={accounts}
+                            loading ={loading}
                        />
                     </Grid>
                 </Box>

@@ -43,8 +43,6 @@ namespace Ass2WebTech.Api.Controllers
             var result = await _userService.DisplayAccounts(a);
 
             var json = JsonConvert.SerializeObject(result);
-                
-            Console.WriteLine(json);
 
             return result;
             

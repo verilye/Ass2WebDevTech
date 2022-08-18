@@ -14,7 +14,8 @@ namespace Ass2WebTech.Core.Interfaces
 
         Task<Account> CreateAccount(Account account);
 
-        Task<Account> UpdateBalance(int id, double amount);
+        Task<Account> AddBalance(int id, double amount);
+        Task<Account> RemoveBalance(int id, double amount);
     
     }
 }

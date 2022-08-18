@@ -113,9 +113,14 @@ namespace Ass2WebTech.Services
 
         }
 
-        public Task<Transaction> Deposit()
+        public async Task<Account> Deposit(int accountId, double amount)
         {
-            throw new NotImplementedException();
+            return await _unitOfWork.Accounts.AddBalance(accountId, amount);
+        }
+
+        public async Task<Account> Withdraw(int accountId, double amount)
+        {
+            return await _unitOfWork.Accounts.RemoveBalance(accountId, amount);
         }
 
         public Task<Login> Logout()
@@ -123,17 +128,17 @@ namespace Ass2WebTech.Services
             throw new NotImplementedException();
         }
 
-        public Task<Customer> MyProfile()
+        public Task<Customer> MyProfile(int customerId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Account>> MyStatements()
+        public Task<IEnumerable<Account>> MyStatements(int customerId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Transaction> Transfer()
+        public Task<Transaction> Transfer(Transaction transaction)
         {
             throw new NotImplementedException();
         }
@@ -147,11 +152,6 @@ namespace Ass2WebTech.Services
         {
 
             var result = await _unitOfWork.Accounts.GetAccountsByCustomerId(accountId);
-
-            foreach(var i in result)
-            {
-                Console.WriteLine(i.Balance);
-            }
 
 
             //ADD login to add up value of all transactions

@@ -1,6 +1,15 @@
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Select, Input, Button, Alert, AlertIcon, AlertDescription } from "@chakra-ui/react";
 import { Flex, Spacer } from "@chakra-ui/layout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+
+interface Account {
+    accountNumber:string;
+    accountType:string;
+    customerID:string;
+    balance:string;
+}
+
 
 export interface DepositDetails {
     accountNumber:string,
@@ -16,26 +25,75 @@ export interface DepositProps {
 
 //register component
 export function Deposit(props: DepositProps) {
+
+    const [accounts,setAccounts] = useState<Account[]>([]);
+    const [loading, setLoading] = useState(false); 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [accountsPerPage, setAccountsPetPage] = useState(10);
     
     //store variables here
     const [accountNumber, setAccountNumber] = useState('');
+    const [amount, setAmount] = useState('');
 
     const accountNumberOnChange = (event) => setAccountNumber(event.target.value);
+    const amountOnChange = (event) => setAmount(event.target.value);
 
     const onDeposit = () => {
         // Validate data here
     };
+
+    useEffect(() =>{
+        const fetchAccounts = ()=>{
+            setLoading(true);
+
+
+            fetch('http://localhost:5213/api/Home', {
+                method:'POST',
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify({
+                    id : sessionStorage.getItem("user")
+                })
+                }).then (response => response.json())
+                .then (body => {
+                    
+                    console.log(body);
+                    setAccounts(body);
+                });
+
+            
+           
+            setLoading(false);
+        }  
+        fetchAccounts();  
+            
+    },[]);
 
     return (
         <Modal isOpen={props.visible} onClose={props.onClose} id="deposit">
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader>Deposit</ModalHeader>
+                <ModalBody>How much would you like to deposit?</ModalBody>
                 <ModalCloseButton />
                 <ModalBody>
-                    {/* This is how text input is formatted <Input disabled={props.disabled} onChange={usernameOnChange} placeholder="username" variant="filled" mb={3} type="username" id="username" /> */}
+                    <Input
+                        disabled={props.disabled}
+                        onChange={amountOnChange}
+                        placeholder="$"
+                        type="amount"
+                        id="amount"
+                    />
+                </ModalBody>
+                <ModalBody></ModalBody>
+                <ModalBody>
                     <Select disabled={props.disabled} onChange={accountNumberOnChange} mb={3} variant="filled" id="state">
-                        {/* Paginate account options like so <option value="account1">Account1</option> */}
+                    {accounts.map(account =>(
+                        <option value={account.accountNumber}> 
+                            <div key={account.accountNumber}>
+                                Account Number: {account.accountNumber}  Type: {account.accountType}
+                            </div>
+                        </option>
+                     ))}   
                     </Select>
                 </ModalBody>
 
