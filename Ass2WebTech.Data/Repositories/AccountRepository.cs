@@ -42,15 +42,24 @@ namespace Ass2WebTech.Data.Repositories
         {
             
             var entity = await _context.Accounts
-                .FirstOrDefaultAsync(x => x.CustomerID == id);
+                .SingleOrDefaultAsync(x => x.AccountNumber == id);
+
+            if(entity!=null){
             
-            Console.WriteLine(entity.Balance);
+            Console.WriteLine("Old Balance" + entity.Balance);
             
             entity.Balance = entity.Balance + amount;
 
             _context.Accounts.Update(entity);
+
+            Console.WriteLine("New Balance" + entity.Balance);
             
+            }
+
+            await _context.SaveChangesAsync();
+
             return entity;
+            
         }
 
          public async Task<Account> RemoveBalance(int id, double amount)

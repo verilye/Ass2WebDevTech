@@ -118,7 +118,7 @@ namespace Ass2WebTech.Data.Migrations
                 {
                     TransactionID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TransactionType = table.Column<int>(type: "int", nullable: false),
+                    TransactionType = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     AccountNumber = table.Column<int>(type: "int", nullable: false),
                     DestinationAccountNumber = table.Column<int>(type: "int", nullable: true),
                     Amount = table.Column<double>(type: "float", nullable: false),

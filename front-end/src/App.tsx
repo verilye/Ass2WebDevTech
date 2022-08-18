@@ -73,10 +73,8 @@ function App() {
       method:'GET',
       headers: { "content-type": "application/json" },
       
-    }).then(response => response.json());
+    })
 
-    
-  
     fetch('http://localhost:5213/api/Login', {
       method:'POST',
       headers: { "content-type": "application/json" },

@@ -1,6 +1,7 @@
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Select, Input, Button, Alert, AlertIcon, AlertDescription } from "@chakra-ui/react";
 import { Flex, Spacer } from "@chakra-ui/layout";
 import { useEffect, useState } from "react";
+import { isVisible } from "@testing-library/user-event/dist/utils";
 
 
 interface Account {
@@ -32,14 +33,26 @@ export function Deposit(props: DepositProps) {
     const [accountsPerPage, setAccountsPetPage] = useState(10);
     
     //store variables here
+    const [comment, setComment]= useState('');
     const [accountNumber, setAccountNumber] = useState('');
     const [amount, setAmount] = useState('');
 
+    const commentOnChange = (event) =>setComment(event.target.value);
     const accountNumberOnChange = (event) => setAccountNumber(event.target.value);
     const amountOnChange = (event) => setAmount(event.target.value);
 
     const onDeposit = () => {
-        // Validate data here
+        
+        fetch('http://localhost:5213/api/Deposit', {
+            method:'POST',
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(
+                    {id : accountNumber,
+                     amount : amount})
+                })
+        props.onClose();      
+        return;
+
     };
 
     useEffect(() =>{
@@ -90,11 +103,21 @@ export function Deposit(props: DepositProps) {
                     {accounts.map(account =>(
                         <option value={account.accountNumber}> 
                             <div key={account.accountNumber}>
-                                Account Number: {account.accountNumber}  Type: {account.accountType}
+                                Account # {account.accountNumber}  Type: {account.accountType} Balance: {account.balance}
                             </div>
                         </option>
                      ))}   
                     </Select>
+                </ModalBody>
+                <ModalBody>Comment:</ModalBody>
+                <ModalBody>
+                    <Input
+                        disabled={props.disabled}
+                        onChange={commentOnChange}
+                        placeholder="..."
+                        type="comment"
+                        id="comment"
+                    />
                 </ModalBody>
 
                 <ModalFooter>

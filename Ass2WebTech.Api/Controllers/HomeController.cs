@@ -37,8 +37,6 @@ namespace Ass2WebTech.Api.Controllers
         {
 
             int a = Int32.Parse(req.id);
-
-            Console.WriteLine(a);
             
             var result = await _userService.DisplayAccounts(a);
 

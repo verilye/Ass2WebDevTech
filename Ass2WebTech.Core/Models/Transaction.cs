@@ -5,22 +5,23 @@ namespace Ass2WebTech.Models
 {
     public class Transaction
     {
-        // public Transaction(TransactionType transactionType, int accountNumber, double amount, DateTime transactionTimeUtc, int destinationAccountNumber) 
-        // {
+        public Transaction(char transactionType, int accountNumber, double amount, DateTime transactionTimeUtc, int? destinationAccountNumber, string comment) 
+        {
         
-        // this.TransactionType = transactionType;
-        // this.AccountNumber = accountNumber;
-        // this.Amount = amount;
-        // this.TransactionTimeUtc = transactionTimeUtc;
-        // this.DestinationAccountNumber = destinationAccountNumber;
+        this.TransactionType = transactionType;
+        this.AccountNumber = accountNumber;
+        this.Amount = amount;
+        this.TransactionTimeUtc = transactionTimeUtc;
+        this.DestinationAccountNumber = destinationAccountNumber;
    
-        // }
+        }
 
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TransactionID{ get; set;}
 
         [Required]
-        public TransactionType TransactionType { get; set; }
+        public char TransactionType { get; set; }
 
         [ForeignKey("AccountNumbers")]
         public int AccountNumber { get; set; }
@@ -32,7 +33,7 @@ namespace Ass2WebTech.Models
         public double Amount { get; set; }
 
         [MaxLength(30)]
-        public string ?Comment { get; set; }
+        public string? Comment { get; set; }
 
         [Required]
         public DateTime TransactionTimeUtc { get; set; }

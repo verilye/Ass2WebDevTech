@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ass2WebTech.Data.Migrations
 {
     [DbContext(typeof(BankContext))]
-    [Migration("20220817230945_test1")]
+    [Migration("20220818205545_test1")]
     partial class test1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -204,8 +204,9 @@ namespace Ass2WebTech.Data.Migrations
                     b.Property<DateTime>("TransactionTimeUtc")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TransactionType")
-                        .HasColumnType("int");
+                    b.Property<string>("TransactionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.HasKey("TransactionID");
 

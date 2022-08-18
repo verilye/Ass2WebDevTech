@@ -202,8 +202,9 @@ namespace Ass2WebTech.Data.Migrations
                     b.Property<DateTime>("TransactionTimeUtc")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TransactionType")
-                        .HasColumnType("int");
+                    b.Property<string>("TransactionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.HasKey("TransactionID");
 

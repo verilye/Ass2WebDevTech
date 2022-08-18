@@ -63,9 +63,11 @@ namespace Ass2WebTech.Services
 
                         foreach (var transaction in account.Transactions.ToList())
                         {
-                            // Transaction trans = new Transaction( TransactionType.Deposit, transaction.AccountNumber, transaction.Amount
-                            //     , transaction.TransactionTimeUtc,  transaction.DestinationAccountNumber);
-                            await _unitOfWork.Transactions.CreateTransaction(transaction);
+                            Transaction trans = new Transaction('D', transaction.AccountNumber, transaction.Amount
+                                , transaction.TransactionTimeUtc,  transaction.DestinationAccountNumber, transaction.Comment);
+                            await _unitOfWork.Transactions.CreateTransaction(trans);
+                            await _unitOfWork.CommitAsync();
+                            await _unitOfWork.Accounts.AddBalance(transaction.AccountNumber,transaction.Amount);
                             // await _unitOfWork.CommitAsync();
                         }
                     }
@@ -113,9 +115,16 @@ namespace Ass2WebTech.Services
 
         }
 
-        public async Task<Account> Deposit(int accountId, double amount)
+        public async Task<Transaction> Deposit(int accountNumber, double amount, string comment)
         {
-            return await _unitOfWork.Accounts.AddBalance(accountId, amount);
+
+            var date = DateTime.Now;
+
+            Transaction transaction = new Transaction('D',accountNumber,amount,date, null, comment);
+
+            await _unitOfWork.Accounts.AddBalance(accountNumber, amount);
+
+            return await _unitOfWork.Transactions.CreateTransaction(transaction);
         }
 
         public async Task<Account> Withdraw(int accountId, double amount)

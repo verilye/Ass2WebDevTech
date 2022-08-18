@@ -43,11 +43,11 @@ namespace Ass2WebTech.Api.Controllers
 
         [HttpGet]
         [Route("preload")]
-        public async Task Preload()
+        public async Task<string> Preload()
         {
 
             await _userService.Preload();
-            return ;
+            return "Preloaded data";
         }
 
     }
