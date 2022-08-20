@@ -24,6 +24,7 @@ interface UserDetails{
 
 function App() {
 
+  localStorage.clear();
   var user = sessionStorage.getItem("user");
 
   const [splashVisible, setSplashVisible] = useState(true);
@@ -42,7 +43,12 @@ function App() {
   const onShowHome = () => { setHomeVisible(true)
     setSplashVisible(false)} ;
 
-  const onLogout = () => { setHomeVisible(false)
+  const onLogout = () => { 
+    
+    localStorage.clear();
+    window.location.href = '/';
+    
+    setHomeVisible(false)
     setNavVisible(false)
     setSplashVisible(true)} ;
 

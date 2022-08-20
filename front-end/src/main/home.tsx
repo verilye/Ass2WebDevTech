@@ -74,7 +74,7 @@ export function Home(props: HomeProps){
         }  
         fetchAccounts();  
             
-    });
+    },[]);
 
     return(
 
